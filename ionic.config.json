@@ -1,0 +1,7 @@
+{
+  "name": "KentangMon",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
