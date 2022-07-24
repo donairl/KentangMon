@@ -16,25 +16,27 @@
   <!--Page Utama -->
   <ion-grid>
     <ion-row>
-      <ion-col>
+      <ion-col size="2">
+
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>Site A</ion-card-subtitle>
             <ion-card-title>Level Sungai</ion-card-title>
           </ion-card-header>
 
-          <ion-card-content>
-             <p>Level : 120 m</p>
-             <p>Low Alarm : 20 m</p>
-             <p>High Alarm : 200 m</p>
-             <p>Middle Alarm : 100m-110m</p>
+          <ion-card-content class="info">
+             <p>Level : <span>120 M</span></p>
+             <p>Low Alarm : <span>15 M</span></p>
+             <p>High Alarm : <span>450 M</span></p>
+             <p>Middle Alarm : <span>90 M - 100 M</span></p>
 
           </ion-card-content>
         </ion-card>
 
       </ion-col>
       <ion-col>
-        ion-col
+        Chart Mu
+        <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" [type]="lineChartType"></canvas>
       </ion-col>
 
     </ion-row>

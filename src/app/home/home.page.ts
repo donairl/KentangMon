@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
+
 
 @Component({
   selector: 'app-home',
@@ -6,7 +8,69 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  public lineChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    layout: {
+      padding: {
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0
+      }
+    },
+    scales: {
+      x: {
+        axis: 'x',
+        grid: {
+          drawBorder: false,
+          display: false
+        },
+        ticks: {
+          display: true
+        }
+      },
+      y: {
+        axis: 'y',
+        min: 0,
+        grid: {
+          drawBorder: false,
+          display: true,
+          drawTicks: false
+        },
+        ticks: {
+          padding: 10
+        }
+      }
+    },
+    plugins: {
+      legend: {
+        display: false
+      }
+    }
+  };
+
+  public lineChartType: ChartType = 'line';
+  lineChartData: any;
 
   constructor() {}
 
+  ionViewDidEnter(){
+
+    this.lineChartData = {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      datasets: [
+        {
+          label: 'Earnings',
+          data: [980, 232, 601, 434, 1090, 1230, 1720],
+          borderColor: '#035388',
+          backgroundColor: 'rgba(3,83,136,0.4)'
+
+        },
+        {
+          label: 'Revenue',
+          data: [120, 699, 1203, 1700, 1200, 1100, 1900]
+        }
+      ]
+    };
+  }
 }
