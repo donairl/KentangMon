@@ -52,9 +52,7 @@ export class HomePage {
   public lineChartType: ChartType = 'line';
   lineChartData: any;
 
-  constructor() {}
-
-  ionViewDidEnter(){
+  constructor() {
 
     this.lineChartData = {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -72,5 +70,11 @@ export class HomePage {
         }
       ]
     };
+  }
+
+
+
+  ionViewDidEnter(){
+
   }
 }
