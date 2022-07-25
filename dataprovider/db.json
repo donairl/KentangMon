@@ -1,0 +1,9 @@
+{
+  "channelinfo": [
+    { "id": 1, "name": "Level Sungai", "unit": "M","alarm_min": 10, "alarm_max": 450,"alarm_mid_on": 90,"alam_mid_off": 100}
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}

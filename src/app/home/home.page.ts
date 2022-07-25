@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
+import {DataFetcherService} from "../services/data-fetcher.service";
+import {Observable} from "rxjs";
 
 
 @Component({
@@ -8,6 +10,7 @@ import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
   public lineChartOptions: ChartConfiguration['options'] = {
     responsive: true,
     layout: {
@@ -52,13 +55,15 @@ export class HomePage {
   public lineChartType: ChartType = 'line';
   lineChartData: any;
 
-  constructor() {
+  public chdata: Observable<DataChannels>;
+
+  constructor(public dfs: DataFetcherService) {
 
     this.lineChartData = {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
       datasets: [
         {
-          label: 'Earnings',
+          label: 'Level',
           data: [980, 232, 601, 434, 1090, 1230, 1720],
           borderColor: '#035388',
           backgroundColor: 'rgba(3,83,136,0.4)'
@@ -73,8 +78,10 @@ export class HomePage {
   }
 
 
+  ionViewWillEnter(){
+    this.chdata = this.dfs.httpChannelinfo();
 
-  ionViewDidEnter(){
-
+    console.log(this.chdata);
   }
+
 }
