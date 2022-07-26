@@ -1,7 +1,11 @@
 import { Component } from '@angular/core';
-import { ChartConfiguration, ChartOptions, ChartType } from 'chart.js';
+
 import {DataFetcherService} from "../services/data-fetcher.service";
 import {Observable} from "rxjs";
+import {Channel} from "../models/channel";
+import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
+
+
 
 
 @Component({
@@ -55,7 +59,7 @@ export class HomePage {
   public lineChartType: ChartType = 'line';
   lineChartData: any;
 
-  public chdata: Observable<DataChannels>;
+  public chdata: Channel;
 
   constructor(public dfs: DataFetcherService) {
 
@@ -79,9 +83,14 @@ export class HomePage {
 
 
   ionViewWillEnter(){
-    this.chdata = this.dfs.httpChannelinfo();
+     this.dfs.httpChannelinfo().subscribe((r)=>{
+         this.chdata = r;
+         console.log(this.chdata);
+     }
 
-    console.log(this.chdata);
+     );
+
+
   }
 
 }

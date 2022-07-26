@@ -16,16 +16,16 @@
   <!--Page Utama -->
   <ion-grid>
     <ion-row>
-      <ion-col size="2">
+      <ion-col sizeLg="2">
 
-        <ion-card>
+        <ion-card *ngIf="chdata">
           <ion-card-header>
             <ion-card-subtitle>Site A</ion-card-subtitle>
-            <ion-card-title>Level Sungai</ion-card-title>
+            <ion-card-title>{{chdata.name}}</ion-card-title>
           </ion-card-header>
 
           <ion-card-content class="info">
-             <p>Level : <span>120 M</span></p>
+             <p>Level : <span>{{chdata.value}} {{chdata.unit}}</span></p>
 
           </ion-card-content>
         </ion-card>
@@ -46,7 +46,7 @@
 
       </ion-col>
       <ion-col>
-        Chart Muaa
+        Trend Chart
         <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" [type]="lineChartType"></canvas>
       </ion-col>
 
