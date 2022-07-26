@@ -83,14 +83,18 @@ export class HomePage {
 
 
   ionViewWillEnter(){
-     this.dfs.httpChannelinfo().subscribe((r)=>{
-         this.chdata = r;
-         console.log(this.chdata);
-     }
-
-     );
+    this.refresh();
 
 
+  }
+
+  refresh(){
+    this.dfs.httpChannelinfo().subscribe((r)=>{
+      this.chdata = r;
+      console.log(this.chdata);
+  }
+
+  );
   }
 
 }

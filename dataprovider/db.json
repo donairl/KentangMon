@@ -1,9 +1,27 @@
 {
   "channelinfo": [
-    { "id": 1, "name": "Level Sungai","value":321, "unit": "M","alarm_min": 10, "alarm_max": 450,"alarm_mid_on": 90,"alam_mid_off": 100}
+    { "id": 1, "name": "Power Usage","value":401, "unit": "M","alarm_min": 10, "alarm_max": 450,"alarm_mid_on": 90,"alam_mid_off": 100}
   ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
+  "trenddata": [
+    { "id": 1, "snapdatetime": "2020-01-01 12:00:00", "channel": 1 ,"value":311},
+    { "id": 2, "snapdatetime": "2020-01-01 12:01:00", "channel": 1 ,"value":211},
+    { "id": 3, "snapdatetime": "2020-01-01 12:02:00", "channel": 1 ,"value":341},
+    { "id": 4, "snapdatetime": "2020-01-01 12:03:00", "channel": 1 ,"value":511},
+    { "id": 5, "snapdatetime": "2020-01-01 12:04:00", "channel": 1 ,"value":211},
+    { "id": 6, "snapdatetime": "2020-01-01 12:05:00", "channel": 1 ,"value":101},
+    { "id": 7, "snapdatetime": "2020-01-01 12:06:00", "channel": 1 ,"value":201},
+    { "id": 8, "snapdatetime": "2020-01-01 12:07:00", "channel": 1 ,"value":188},
+    { "id": 9, "snapdatetime": "2020-01-01 12:08:00", "channel": 1 ,"value":200},
+    { "id": 10, "snapdatetime": "2020-01-01 12:09:00", "channel": 1 ,"value":222},
+    { "id": 11, "snapdatetime": "2020-01-01 12:10:00", "channel": 1 ,"value":236},
+    { "id": 12, "snapdatetime": "2020-01-01 12:11:00", "channel": 1 ,"value":294},
+    { "id": 13, "snapdatetime": "2020-01-01 12:12:00", "channel": 1 ,"value":428},
+    { "id": 14, "snapdatetime": "2020-01-01 12:13:00", "channel": 1 ,"value":448},
+    { "id": 15, "snapdatetime": "2020-01-01 12:14:00", "channel": 1 ,"value":518},
+    { "id": 16, "snapdatetime": "2020-01-01 12:15:00", "channel": 1 ,"value":333},
+    { "id": 17, "snapdatetime": "2020-01-01 12:16:00", "channel": 1 ,"value":213},
+    { "id": 18, "snapdatetime": "2020-01-01 12:17:00", "channel": 1 ,"value":183}
+
   ],
   "profile": { "name": "typicode" }
 }
