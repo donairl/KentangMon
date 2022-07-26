@@ -1,6 +1,6 @@
 {
   "channelinfo": [
-    { "id": 1, "name": "Power Usage","value":1401, "unit": "Kwh","alarm_min": 10, "alarm_max": 450,"alarm_mid_on": 90,"alam_mid_off": 100}
+    { "id": 1, "name": "Power Usage","value":200, "unit": "Kwh","alarm_min": 10, "alarm_max": 450,"alarm_mid_on": 90,"alam_mid_off": 100}
   ],
   "trenddata": [
     { "id": 1, "snapdatetime": "2020-01-01 12:00:00", "channel": 1 ,"value":311},

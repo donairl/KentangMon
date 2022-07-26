@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import {DataFetcherService} from "../services/data-fetcher.service";
-import {Observable} from "rxjs";
+import {interval, Observable} from "rxjs";
 import {Channel} from "../models/channel";
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 
@@ -84,21 +84,22 @@ export class HomePage {
 
   ionViewWillEnter(){
     this.refresh();
-
+    interval(10*1000).subscribe((r)=>{
+      //  this.chdata = r;
+      this.refresh();
+      console.log(r);
+    });
 
   }
 
   refresh(){
 
-    interval(1000).pipe(ev =>this.dfs.httpChannelinfo()).subscribe((r)=>{
-           this.chdata = r;
-           console.log(this.chdata);
-       });
 
-  //   this.dfs.httpChannelinfo().subscribe((r)=>{
-  //     this.chdata = r;
-  //     console.log(this.chdata);
-  // });
+
+    this.dfs.httpChannelinfo().subscribe((r)=>{
+      this.chdata = r;
+      console.log(this.chdata);
+  });
   }
 
 }
