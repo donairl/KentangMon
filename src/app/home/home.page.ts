@@ -89,12 +89,16 @@ export class HomePage {
   }
 
   refresh(){
-    this.dfs.httpChannelinfo().subscribe((r)=>{
-      this.chdata = r;
-      console.log(this.chdata);
-  }
 
-  );
+    interval(1000).pipe(ev =>this.dfs.httpChannelinfo()).subscribe((r)=>{
+           this.chdata = r;
+           console.log(this.chdata);
+       });
+
+  //   this.dfs.httpChannelinfo().subscribe((r)=>{
+  //     this.chdata = r;
+  //     console.log(this.chdata);
+  // });
   }
 
 }
