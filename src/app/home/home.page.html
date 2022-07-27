@@ -16,9 +16,9 @@
   <!--Page Utama -->
   <ion-grid>
     <ion-row>
-      <ion-col sizeLg="2">
+      <ion-col sizeLg="2"  *ngIf="chdata">
 
-        <ion-card *ngIf="chdata">
+        <ion-card>
           <ion-card-header>
             <ion-card-subtitle>Site A</ion-card-subtitle>
             <ion-card-title>{{chdata.name}}</ion-card-title>
@@ -26,26 +26,30 @@
 
           <ion-card-content class="info">
              <p>Level : <span>{{chdata.value}} {{chdata.unit}}</span></p>
-             <ion-button (click)="refresh()">Refresh</ion-button>
+             <ion-button color="dark" (click)="presentActionMenu()"><ion-icon name="menu-outline"></ion-icon></ion-button>
+             <ion-button color="dark" (click)="refresh()"><ion-icon name="refresh-circle-outline"></ion-icon></ion-button>
+             <ion-button color="dark" (click)="setAlarm()"><ion-icon name="alarm-outline"></ion-icon></ion-button>
+
           </ion-card-content>
         </ion-card>
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>Alarm</ion-card-subtitle>
-            <ion-card-title>Level Sungai</ion-card-title>
+            <ion-card-title>{{chdata.name}}</ion-card-title>
           </ion-card-header>
 
           <ion-card-content class="info">
 
-             <p>Low Alarm : <span>15 M</span></p>
-             <p>High Alarm : <span>450 M</span></p>
-             <p>Middle Alarm : <span>90 M - 100 M</span></p>
+             <p>Low Alarm : <span>{{chdata.alarm_min}} {{chdata.unit}}</span></p>
+             <p>Mid Alarm On: <span>{{chdata.alarm_mid_on}} {{chdata.unit}}</span></p>
+             <p>Mid Alarm Of: <span>{{chdata.alarm_mid_off}} {{chdata.unit}}</span></p>
+             <p>High Alarm : <span>{{chdata.alarm_min}} {{chdata.unit}}</span></p>
 
           </ion-card-content>
         </ion-card>
 
       </ion-col>
-      <ion-col>
+      <ion-col sizeLg="10">
         Trend Chart
         <canvas baseChart [data]="lineChartData" [options]="lineChartOptions" [type]="lineChartType"></canvas>
       </ion-col>

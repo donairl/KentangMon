@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable, throwError} from "rxjs";
 import {catchError, retry} from 'rxjs/operators'
-import {Channel} from '../models/channel';
+import {Channel, trend} from '../models/channel';
 
 import {
   HttpClient,
@@ -25,6 +25,16 @@ export class DataFetcherService {
 
     return this.http.get<Channel>(this.rootApi + '/channelinfo/1').pipe(
       retry(2),
+      catchError(this.handleError)
+    );
+
+  }
+
+  public httpChannelTrend(): Observable<trend[]> {
+
+
+    return this.http.get<trend[]>(this.rootApi + '/trend').pipe(
+      retry(3),
       catchError(this.handleError)
     );
 

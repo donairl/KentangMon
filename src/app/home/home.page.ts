@@ -4,6 +4,7 @@ import {DataFetcherService} from "../services/data-fetcher.service";
 import {interval, Observable} from "rxjs";
 import {Channel} from "../models/channel";
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
+import {ActionSheetController} from "@ionic/angular";
 
 
 
@@ -61,7 +62,7 @@ export class HomePage {
 
   public chdata: Channel;
 
-  constructor(public dfs: DataFetcherService) {
+  constructor(public dfs: DataFetcherService,public actionSheetController: ActionSheetController) {
 
     this.lineChartData = {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -99,7 +100,67 @@ export class HomePage {
     this.dfs.httpChannelinfo().subscribe((r)=>{
       this.chdata = r;
       console.log(this.chdata);
-  });
+   });
+
+    this.dfs.httpChannelTrend().subscribe((r)=>{
+     // this.chdata = r;
+      console.log(r);
+    });
+
+
   }
 
+  async presentActionMenu() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Change Channel',
+      cssClass: 'my-custom-class',
+      buttons: [{
+        text: 'Level Sungai',
+        role: 'destructive',
+        icon: 'trash',
+        id: 'delete-button',
+        data: {
+          type: 'delete'
+        },
+        handler: () => {
+          console.log('Delete clicked');
+        }
+      }, {
+        text: 'Power Usage',
+        icon: 'share',
+        data: 10,
+        handler: () => {
+          console.log('Share clicked');
+        }
+      }, {
+        text: 'Temperature',
+        icon: 'caret-forward-circle',
+        data: 'Data value',
+        handler: () => {
+          console.log('Play clicked');
+        }
+      }, {
+        text: 'Oxygen Level',
+        icon: 'heart',
+        handler: () => {
+          console.log('Favorite clicked');
+        }
+      }, {
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+
+    const { role, data } = await actionSheet.onDidDismiss();
+    console.log('onDidDismiss resolved with role and data', role, data);
+  }
+
+  setAlarm() {
+
+  }
 }
