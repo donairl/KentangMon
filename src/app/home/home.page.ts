@@ -21,6 +21,7 @@ export class HomePage {
 
   public lineChartOptions: ChartConfiguration['options'] = {
     responsive: true,
+
     layout: {
       padding: {
         top: 0,
@@ -32,21 +33,29 @@ export class HomePage {
     scales: {
       x: {
         axis: 'x',
+        display:true,
         grid: {
-          drawBorder: false,
-          display: false
+          drawBorder: true,
+          display: true,
+          color: '#230b47'
+        },title: {
+          display: true,
+          text: 'Timestamp'
         },
         ticks: {
-          display: true
+          display: true,
+          color: '#9ab45d'
+
         }
       },
       y: {
         axis: 'y',
         min: 0,
         grid: {
-          drawBorder: false,
+          drawBorder: true,
           display: true,
-          drawTicks: false
+          drawTicks: true,
+          color: '#230b47'
         },
         ticks: {
           padding: 10
@@ -55,9 +64,10 @@ export class HomePage {
     },
     plugins: {
       legend: {
-        display: false
+        display: true
       }
-    }
+    },
+
   };
 
   public lineChartType: ChartType = 'line';
@@ -69,6 +79,7 @@ export class HomePage {
 
     this.lineChartData = {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+
       datasets: [
         {
           label: 'Level',
@@ -80,8 +91,9 @@ export class HomePage {
         {
           label: 'Alarm Min',
           data: [],
-          borderColor: '#ff0000',
-          backgroundColor: 'rgba(3,83,136,0.4)'
+          borderColor: '#9e0000',
+         // backgroundColor: '#000000'
+
         }
       ]
     };
@@ -90,7 +102,7 @@ export class HomePage {
 
   ionViewWillEnter(){
     this.refresh();
-    interval(2*1000).subscribe((r)=>{
+    interval(10 *1000).subscribe((r)=>{
       //  this.chdata = r;
       this.refresh();
       console.log(r);
@@ -116,7 +128,7 @@ export class HomePage {
   updateChart(){
    this.lineChartData.labels=[];
    this.lineChartData.datasets[0].data.shift();
-   this.lineChartData.datasets[1].data.shift();
+   this.lineChartData.datasets[1].data=[];
    this.lineChartData.datasets[0].label = this.chdata.name;
 
 
@@ -126,18 +138,15 @@ export class HomePage {
       r.forEach((row)=>{
         this.lineChartData.labels.push(row.snapdatetime);
         this.lineChartData.datasets[0].data.push(Math.floor(Math.random() * row.value) + row.value-100);
-        this.lineChartData.datasets[1].data.push(Math.floor(Math.random() * this.chdata.alarm_max) + 1);
+        this.lineChartData.datasets[1].data.push( this.chdata.alarm_max);
 
       });
 
-      // draw line
-      this.chart.chart.ctx.beginPath();
-      this.chart.chart.ctx.moveTo(60, this.chdata.alarm_max);
-      this.chart.chart.ctx.strokeStyle = '#ff0000';
 
-      this.chart.chart.ctx.lineTo(this.chart.chart.width, this.chdata.alarm_max);
-      this.chart.chart.ctx.stroke();
+      console.log('w =',this.chart.chart.width, this.chdata.alarm_max);
       this.chart.chart.update();
+
+
 
     });
 
