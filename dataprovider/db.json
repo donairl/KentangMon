@@ -1,6 +1,9 @@
 {
   "channelinfo": [
-    { "id": 1, "name": "Power Usage","value":200, "unit": "Kwh","alarm_min": 10, "alarm_max": 450,"alarm_mid_on": 90,"alarm_mid_off": 100}
+    { "id": 1, "name": "Water Level","value":720, "unit": "Kwh","alarm_min": 100, "alarm_max": 650,"alarm_mid_on": 300,"alarm_mid_off": 320},
+    { "id": 2, "name": "Power Usage","value":420, "unit": "Kwh","alarm_min": 200, "alarm_max": 1000,"alarm_mid_on": 300,"alarm_mid_off": 320},
+    { "id": 3, "name": "Flow","value":20, "unit": "L","alarm_min": 40, "alarm_max": 100,"alarm_mid_on": 50,"alarm_mid_off": 55}
+
   ],
   "trend": [
     { "id": 1, "snapdatetime": "2020-01-01 12:00:00", "channel": 1 ,"value":611},

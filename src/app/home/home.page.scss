@@ -36,3 +36,14 @@
   color: wheat;
   font-size: 14px;
 }
+
+.blinkme {
+  animation: blinker 1s linear infinite;
+  background-color: #e04055;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

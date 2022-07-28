@@ -25,7 +25,7 @@
           </ion-card-header>
 
           <ion-card-content class="info">
-             <p>Level : <span>{{chdata.value}} {{chdata.unit}}</span></p>
+             <p><span>{{chdata.value}} </span>{{chdata.unit}}</p>
              <ion-button color="dark" (click)="presentActionMenu()"><ion-icon name="menu-outline"></ion-icon></ion-button>
              <ion-button color="dark" (click)="refresh()"><ion-icon name="refresh-circle-outline"></ion-icon></ion-button>
              <ion-button color="dark" (click)="setAlarm()"><ion-icon name="alarm-outline"></ion-icon></ion-button>
@@ -40,10 +40,14 @@
 
           <ion-card-content class="info">
 
-             <p>Low Alarm : <span>{{chdata.alarm_min}} {{chdata.unit}}</span></p>
-             <p>Mid Alarm On: <span>{{chdata.alarm_mid_on}} {{chdata.unit}}</span></p>
-             <p>Mid Alarm Of: <span>{{chdata.alarm_mid_off}} {{chdata.unit}}</span></p>
-             <p>High Alarm : <span>{{chdata.alarm_max}} {{chdata.unit}}</span></p>
+             <p [ngClass]="{'blinkme': chdata.value <= chdata.alarm_min }">Low Alarm : <span>{{chdata.alarm_min}} </span>{{chdata.unit}}</p>
+            <p [ngClass]="{'blinkme':  chdata.value >= chdata.alarm_mid_on && chdata.value <= chdata.alarm_mid_off }">Mid Alarm Off:
+              <span>{{chdata.alarm_mid_off}} </span>
+              {{chdata.unit}}
+            </p>
+             <p [ngClass]="{'blinkme': chdata.value >= chdata.alarm_mid_on && chdata.value <= chdata.alarm_mid_off}">Mid Alarm On: <span>{{chdata.alarm_mid_on}} </span>{{chdata.unit}}</p>
+
+             <p [ngClass]="{'blinkme': chdata.value >= chdata.alarm_max }">High Alarm : <span>{{chdata.alarm_max}} </span>{{chdata.unit}}</p>
 
           </ion-card-content>
         </ion-card>

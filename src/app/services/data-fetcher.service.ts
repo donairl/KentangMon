@@ -20,10 +20,10 @@ export class DataFetcherService {
 
   constructor(public http:HttpClient) { }
 
-  public httpChannelinfo(): Observable<Channel> {
+  public httpChannelinfo(channelNo): Observable<Channel> {
 
 
-    return this.http.get<Channel>(this.rootApi + '/channelinfo/1').pipe(
+    return this.http.get<Channel>(this.rootApi + '/channelinfo/'+channelNo).pipe(
       retry(2),
       catchError(this.handleError)
     );

@@ -36,7 +36,7 @@ export class HomePage {
         display:true,
         grid: {
           drawBorder: true,
-          display: true,
+          display: false,
           color: '#230b47'
         },title: {
           display: true,
@@ -74,6 +74,7 @@ export class HomePage {
   lineChartData: any;
 
   public chdata: Channel;
+  private activeChannel:number;
 
   constructor(public dfs: DataFetcherService,public actionSheetController: ActionSheetController) {
 
@@ -89,14 +90,24 @@ export class HomePage {
 
         },
         {
-          label: 'Alarm Min',
+          label: 'Alarm Max',
           data: [],
           borderColor: '#9e0000',
          // backgroundColor: '#000000'
 
+        },
+        {
+          label: 'Alarm Min',
+          data: [],
+          borderColor: '#016113',
+          // backgroundColor: '#000000'
+
         }
       ]
     };
+
+    this.activeChannel = 1;
+
   }
 
 
@@ -114,7 +125,7 @@ export class HomePage {
 
 
 
-    this.dfs.httpChannelinfo().subscribe((r)=>{
+    this.dfs.httpChannelinfo(this.activeChannel).subscribe((r)=>{
       this.chdata = r;
       console.log(this.chdata);
        this.updateChart();
@@ -129,6 +140,7 @@ export class HomePage {
    this.lineChartData.labels=[];
    this.lineChartData.datasets[0].data.shift();
    this.lineChartData.datasets[1].data=[];
+   this.lineChartData.datasets[2].data=[];
    this.lineChartData.datasets[0].label = this.chdata.name;
 
 
@@ -137,8 +149,9 @@ export class HomePage {
       console.log(r);
       r.forEach((row)=>{
         this.lineChartData.labels.push(row.snapdatetime);
-        this.lineChartData.datasets[0].data.push(Math.floor(Math.random() * row.value) + row.value-100);
+        this.lineChartData.datasets[0].data.push(Math.floor(Math.random() * row.value));
         this.lineChartData.datasets[1].data.push( this.chdata.alarm_max);
+        this.lineChartData.datasets[2].data.push( this.chdata.alarm_min);
 
       });
 
