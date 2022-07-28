@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 
 import {DataFetcherService} from "../services/data-fetcher.service";
 import {interval, Observable} from "rxjs";
 import {Channel} from "../models/channel";
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import {ActionSheetController} from "@ionic/angular";
+import { BaseChartDirective } from 'ng2-charts';
 
 
 
@@ -15,6 +16,8 @@ import {ActionSheetController} from "@ionic/angular";
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
+  @ViewChild(BaseChartDirective) chart: BaseChartDirective;
 
   public lineChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -69,14 +72,16 @@ export class HomePage {
       datasets: [
         {
           label: 'Level',
-          data: [980, 232, 601, 434, 1090, 1230, 1720],
+          data: [],
           borderColor: '#035388',
           backgroundColor: 'rgba(3,83,136,0.4)'
 
         },
         {
-          label: 'Revenue',
-          data: [120, 699, 1203, 1700, 1200, 1100, 1900]
+          label: 'Alarm Min',
+          data: [],
+          borderColor: '#ff0000',
+          backgroundColor: 'rgba(3,83,136,0.4)'
         }
       ]
     };
@@ -85,7 +90,7 @@ export class HomePage {
 
   ionViewWillEnter(){
     this.refresh();
-    interval(10*1000).subscribe((r)=>{
+    interval(2*1000).subscribe((r)=>{
       //  this.chdata = r;
       this.refresh();
       console.log(r);
@@ -100,11 +105,40 @@ export class HomePage {
     this.dfs.httpChannelinfo().subscribe((r)=>{
       this.chdata = r;
       console.log(this.chdata);
+       this.updateChart();
+
    });
+
+
+
+  }
+
+  updateChart(){
+   this.lineChartData.labels=[];
+   this.lineChartData.datasets[0].data.shift();
+   this.lineChartData.datasets[1].data.shift();
+   this.lineChartData.datasets[0].label = this.chdata.name;
+
 
     this.dfs.httpChannelTrend().subscribe((r)=>{
      // this.chdata = r;
       console.log(r);
+      r.forEach((row)=>{
+        this.lineChartData.labels.push(row.snapdatetime);
+        this.lineChartData.datasets[0].data.push(Math.floor(Math.random() * row.value) + row.value-100);
+        this.lineChartData.datasets[1].data.push(Math.floor(Math.random() * this.chdata.alarm_max) + 1);
+
+      });
+
+      // draw line
+      this.chart.chart.ctx.beginPath();
+      this.chart.chart.ctx.moveTo(60, this.chdata.alarm_max);
+      this.chart.chart.ctx.strokeStyle = '#ff0000';
+
+      this.chart.chart.ctx.lineTo(this.chart.chart.width, this.chdata.alarm_max);
+      this.chart.chart.ctx.stroke();
+      this.chart.chart.update();
+
     });
 
 

@@ -3,10 +3,10 @@
     { "id": 1, "name": "Power Usage","value":200, "unit": "Kwh","alarm_min": 10, "alarm_max": 450,"alarm_mid_on": 90,"alarm_mid_off": 100}
   ],
   "trend": [
-    { "id": 1, "snapdatetime": "2020-01-01 12:00:00", "channel": 1 ,"value":311},
-    { "id": 2, "snapdatetime": "2020-01-01 12:01:00", "channel": 1 ,"value":211},
-    { "id": 3, "snapdatetime": "2020-01-01 12:02:00", "channel": 1 ,"value":341},
-    { "id": 4, "snapdatetime": "2020-01-01 12:03:00", "channel": 1 ,"value":511},
+    { "id": 1, "snapdatetime": "2020-01-01 12:00:00", "channel": 1 ,"value":611},
+    { "id": 2, "snapdatetime": "2020-01-01 12:01:00", "channel": 1 ,"value":511},
+    { "id": 3, "snapdatetime": "2020-01-01 12:02:00", "channel": 1 ,"value":441},
+    { "id": 4, "snapdatetime": "2020-01-01 12:03:00", "channel": 1 ,"value":311},
     { "id": 5, "snapdatetime": "2020-01-01 12:04:00", "channel": 1 ,"value":211},
     { "id": 6, "snapdatetime": "2020-01-01 12:05:00", "channel": 1 ,"value":101},
     { "id": 7, "snapdatetime": "2020-01-01 12:06:00", "channel": 1 ,"value":201},
@@ -20,7 +20,9 @@
     { "id": 15, "snapdatetime": "2020-01-01 12:14:00", "channel": 1 ,"value":518},
     { "id": 16, "snapdatetime": "2020-01-01 12:15:00", "channel": 1 ,"value":333},
     { "id": 17, "snapdatetime": "2020-01-01 12:16:00", "channel": 1 ,"value":213},
-    { "id": 18, "snapdatetime": "2020-01-01 12:17:00", "channel": 1 ,"value":183}
+    { "id": 19, "snapdatetime": "2020-01-01 12:17:00", "channel": 1 ,"value":383},
+    { "id": 20, "snapdatetime": "2020-01-01 12:18:00", "channel": 1 ,"value":283},
+    { "id": 21, "snapdatetime": "2020-01-01 12:19:00", "channel": 1 ,"value":111}
 
   ],
   "profile": { "name": "typicode" }
