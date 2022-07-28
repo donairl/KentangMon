@@ -30,6 +30,15 @@ export class DataFetcherService {
 
   }
 
+  public httpAllChannel(): Observable<Channel[]> {
+
+
+    return this.http.get<Channel[]>(this.rootApi + '/channelinfo').pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+
+  }
   public httpChannelTrend(): Observable<trend[]> {
 
 

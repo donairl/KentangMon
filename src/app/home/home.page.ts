@@ -4,7 +4,7 @@ import {DataFetcherService} from "../services/data-fetcher.service";
 import {interval, Observable} from "rxjs";
 import {Channel} from "../models/channel";
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
-import {ActionSheetController} from "@ionic/angular";
+import {ActionSheetButton, ActionSheetController} from "@ionic/angular";
 import { BaseChartDirective } from 'ng2-charts';
 
 
@@ -75,9 +75,10 @@ export class HomePage {
 
   public chdata: Channel;
   private activeChannel:number;
+  private menuButton: Array<ActionSheetButton>;
 
   constructor(public dfs: DataFetcherService,public actionSheetController: ActionSheetController) {
-
+    this.updateMenu();
     this.lineChartData = {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 
@@ -112,6 +113,7 @@ export class HomePage {
 
 
   ionViewWillEnter(){
+
     this.refresh();
     interval(10 *1000).subscribe((r)=>{
       //  this.chdata = r;
@@ -166,52 +168,51 @@ export class HomePage {
 
   }
 
+  updateMenu(){
+
+    this.menuButton=[];
+    this.dfs.httpAllChannel().subscribe((r)=>{
+      r.forEach((row)=>{
+        this.menuButton.push(
+        {
+            text: row.name,
+            icon: 'heart',
+            data: row.id,
+            handler: () => {
+             console.log('Clicked '+row.id);
+              this.activeChannel = row.id;
+              this.refresh();
+            }
+        }
+        );
+      });
+    });
+    this.menuButton.push(
+     {
+      text: 'Cancel',
+      icon: 'close',
+      role: 'cancel',
+      handler: () => {
+        console.log('Cancel clicked');
+      }
+    });
+  }
+
   async presentActionMenu() {
     const actionSheet = await this.actionSheetController.create({
       header: 'Change Channel',
       cssClass: 'my-custom-class',
-      buttons: [{
-        text: 'Level Sungai',
-        role: 'destructive',
-        icon: 'trash',
-        id: 'delete-button',
-        data: {
-          type: 'delete'
-        },
-        handler: () => {
-          console.log('Delete clicked');
-        }
-      }, {
-        text: 'Power Usage',
-        icon: 'share',
-        data: 10,
-        handler: () => {
-          console.log('Share clicked');
-        }
-      }, {
-        text: 'Temperature',
-        icon: 'caret-forward-circle',
-        data: 'Data value',
-        handler: () => {
-          console.log('Play clicked');
-        }
-      }, {
-        text: 'Oxygen Level',
-        icon: 'heart',
-        handler: () => {
-          console.log('Favorite clicked');
-        }
-      }, {
-        text: 'Cancel',
-        icon: 'close',
-        role: 'cancel',
-        handler: () => {
-          console.log('Cancel clicked');
-        }
-      }]
+      buttons: this.menuButton
     });
     await actionSheet.present();
-
+    // [, {
+    //   text: 'Cancel',
+    //   icon: 'close',
+    //   role: 'cancel',
+    //   handler: () => {
+    //     console.log('Cancel clicked');
+    //   }
+    // }]
     const { role, data } = await actionSheet.onDidDismiss();
     console.log('onDidDismiss resolved with role and data', role, data);
   }
