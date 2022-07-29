@@ -4,7 +4,7 @@ import {DataFetcherService} from "../services/data-fetcher.service";
 import {interval, Observable} from "rxjs";
 import {Channel} from "../models/channel";
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
-import {ActionSheetButton, ActionSheetController} from "@ionic/angular";
+import {ActionSheetButton, ActionSheetController, IonModal} from "@ionic/angular";
 import { BaseChartDirective } from 'ng2-charts';
 
 
@@ -18,6 +18,7 @@ import { BaseChartDirective } from 'ng2-charts';
 export class HomePage {
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective;
+  @ViewChild(IonModal) modal: IonModal;
 
   public lineChartOptions: ChartConfiguration['options'] = {
     responsive: true,
@@ -220,4 +221,20 @@ export class HomePage {
   setAlarm() {
 
   }
+
+  confirmChangeAlarm() {
+    this.modal.dismiss(null, 'confirm');
+  }
+
+  closeModal() {
+    this.modal.dismiss(null, 'cancel');
+  }
+
+  onWillDismiss(event: any) {
+    // const ev = event as CustomEvent<OverlayEventDetail<string>>;
+    // if (ev.detail.role === 'confirm') {
+    //   this.message = `Hello, ${ev.detail.data}!`;
+    //}
+  }
+
 }
