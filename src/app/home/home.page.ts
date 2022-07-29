@@ -237,4 +237,7 @@ export class HomePage {
     //}
   }
 
+  openAlarmModel() {
+    this.modal.present().then(r => console.log(r));
+  }
 }
