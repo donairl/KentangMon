@@ -20,3 +20,10 @@ export interface trend {
   channel: number;
   value: number;
 }
+
+export interface Ialarm {
+  alarm_min:number;
+  alarm_max:number;
+  alarm_mid_on:number;
+  alarm_mid_off:number;
+}

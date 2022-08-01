@@ -77,6 +77,7 @@ export class HomePage {
   public chdata: Channel;
   private activeChannel:number;
   private menuButton: Array<ActionSheetButton>;
+  alarm: any;
 
   constructor(public dfs: DataFetcherService,public actionSheetController: ActionSheetController) {
     this.updateMenu();
@@ -219,7 +220,7 @@ export class HomePage {
   }
 
   setAlarm() {
-
+     console.log(this.alarm);
   }
 
   confirmChangeAlarm() {
