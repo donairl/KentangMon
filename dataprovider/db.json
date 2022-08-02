@@ -6,7 +6,7 @@
       "value": 720,
       "unit": "Kwh",
       "alarm_min": 100,
-      "alarm_max": "900",
+      "alarm_max": "700",
       "alarm_mid_on": "250",
       "alarm_mid_off": "300"
     },

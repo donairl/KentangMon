@@ -68,13 +68,17 @@
           <ion-buttons slot="start">
             <ion-button (click)="closeModal()">Cancel</ion-button>
           </ion-buttons>
-          <ion-title>Set Alarm Value</ion-title>
+          <ion-title>Set Name & Alarm Value</ion-title>
           <ion-buttons slot="end">
             <ion-button (click)="confirmChangeAlarm()" [strong]="true">Save</ion-button>
           </ion-buttons>
         </ion-toolbar>
       </ion-header>
       <ion-content class="ion-padding">
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input type="text" placeholder="Enter value" [(ngModel)]="alarm.name"></ion-input>
+        </ion-item>
         <ion-item>
           <ion-label position="stacked">Alarm Min</ion-label>
           <ion-input type="text" placeholder="Enter value" [(ngModel)]="alarm.alarm_min"></ion-input>
