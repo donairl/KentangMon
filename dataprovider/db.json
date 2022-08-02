@@ -1,32 +1,159 @@
 {
   "channelinfo": [
-    { "id": 1, "name": "Water Level","value":720, "unit": "Kwh","alarm_min": 100, "alarm_max": 650,"alarm_mid_on": 300,"alarm_mid_off": 320},
-    { "id": 2, "name": "Power Usage","value":420, "unit": "Kwh","alarm_min": 200, "alarm_max": 1000,"alarm_mid_on": 300,"alarm_mid_off": 320},
-    { "id": 3, "name": "Flow","value":20, "unit": "L","alarm_min": 40, "alarm_max": 100,"alarm_mid_on": 50,"alarm_mid_off": 55}
-
+    {
+      "id": 1,
+      "name": "Water Level",
+      "value": 720,
+      "unit": "Kwh",
+      "alarm_min": 100,
+      "alarm_max": "900",
+      "alarm_mid_on": "250",
+      "alarm_mid_off": "300"
+    },
+    {
+      "id": 2,
+      "name": "Power Usage",
+      "value": 420,
+      "unit": "Kwh",
+      "alarm_min": 200,
+      "alarm_max": 1000,
+      "alarm_mid_on": 300,
+      "alarm_mid_off": 320
+    },
+    {
+      "id": 3,
+      "name": "Flow",
+      "value": 20,
+      "unit": "L",
+      "alarm_min": 40,
+      "alarm_max": 100,
+      "alarm_mid_on": 50,
+      "alarm_mid_off": 55
+    }
   ],
   "trend": [
-    { "id": 1, "snapdatetime": "2020-01-01 12:00:00", "channel": 1 ,"value":611},
-    { "id": 2, "snapdatetime": "2020-01-01 12:01:00", "channel": 1 ,"value":511},
-    { "id": 3, "snapdatetime": "2020-01-01 12:02:00", "channel": 1 ,"value":441},
-    { "id": 4, "snapdatetime": "2020-01-01 12:03:00", "channel": 1 ,"value":311},
-    { "id": 5, "snapdatetime": "2020-01-01 12:04:00", "channel": 1 ,"value":211},
-    { "id": 6, "snapdatetime": "2020-01-01 12:05:00", "channel": 1 ,"value":101},
-    { "id": 7, "snapdatetime": "2020-01-01 12:06:00", "channel": 1 ,"value":201},
-    { "id": 8, "snapdatetime": "2020-01-01 12:07:00", "channel": 1 ,"value":188},
-    { "id": 9, "snapdatetime": "2020-01-01 12:08:00", "channel": 1 ,"value":200},
-    { "id": 10, "snapdatetime": "2020-01-01 12:09:00", "channel": 1 ,"value":222},
-    { "id": 11, "snapdatetime": "2020-01-01 12:10:00", "channel": 1 ,"value":236},
-    { "id": 12, "snapdatetime": "2020-01-01 12:11:00", "channel": 1 ,"value":294},
-    { "id": 13, "snapdatetime": "2020-01-01 12:12:00", "channel": 1 ,"value":428},
-    { "id": 14, "snapdatetime": "2020-01-01 12:13:00", "channel": 1 ,"value":448},
-    { "id": 15, "snapdatetime": "2020-01-01 12:14:00", "channel": 1 ,"value":518},
-    { "id": 16, "snapdatetime": "2020-01-01 12:15:00", "channel": 1 ,"value":333},
-    { "id": 17, "snapdatetime": "2020-01-01 12:16:00", "channel": 1 ,"value":213},
-    { "id": 19, "snapdatetime": "2020-01-01 12:17:00", "channel": 1 ,"value":383},
-    { "id": 20, "snapdatetime": "2020-01-01 12:18:00", "channel": 1 ,"value":283},
-    { "id": 21, "snapdatetime": "2020-01-01 12:19:00", "channel": 1 ,"value":111}
-
+    {
+      "id": 1,
+      "snapdatetime": "2020-01-01 12:00:00",
+      "channel": 1,
+      "value": 611
+    },
+    {
+      "id": 2,
+      "snapdatetime": "2020-01-01 12:01:00",
+      "channel": 1,
+      "value": 511
+    },
+    {
+      "id": 3,
+      "snapdatetime": "2020-01-01 12:02:00",
+      "channel": 1,
+      "value": 441
+    },
+    {
+      "id": 4,
+      "snapdatetime": "2020-01-01 12:03:00",
+      "channel": 1,
+      "value": 311
+    },
+    {
+      "id": 5,
+      "snapdatetime": "2020-01-01 12:04:00",
+      "channel": 1,
+      "value": 211
+    },
+    {
+      "id": 6,
+      "snapdatetime": "2020-01-01 12:05:00",
+      "channel": 1,
+      "value": 101
+    },
+    {
+      "id": 7,
+      "snapdatetime": "2020-01-01 12:06:00",
+      "channel": 1,
+      "value": 201
+    },
+    {
+      "id": 8,
+      "snapdatetime": "2020-01-01 12:07:00",
+      "channel": 1,
+      "value": 188
+    },
+    {
+      "id": 9,
+      "snapdatetime": "2020-01-01 12:08:00",
+      "channel": 1,
+      "value": 200
+    },
+    {
+      "id": 10,
+      "snapdatetime": "2020-01-01 12:09:00",
+      "channel": 1,
+      "value": 222
+    },
+    {
+      "id": 11,
+      "snapdatetime": "2020-01-01 12:10:00",
+      "channel": 1,
+      "value": 236
+    },
+    {
+      "id": 12,
+      "snapdatetime": "2020-01-01 12:11:00",
+      "channel": 1,
+      "value": 294
+    },
+    {
+      "id": 13,
+      "snapdatetime": "2020-01-01 12:12:00",
+      "channel": 1,
+      "value": 428
+    },
+    {
+      "id": 14,
+      "snapdatetime": "2020-01-01 12:13:00",
+      "channel": 1,
+      "value": 448
+    },
+    {
+      "id": 15,
+      "snapdatetime": "2020-01-01 12:14:00",
+      "channel": 1,
+      "value": 518
+    },
+    {
+      "id": 16,
+      "snapdatetime": "2020-01-01 12:15:00",
+      "channel": 1,
+      "value": 333
+    },
+    {
+      "id": 17,
+      "snapdatetime": "2020-01-01 12:16:00",
+      "channel": 1,
+      "value": 213
+    },
+    {
+      "id": 19,
+      "snapdatetime": "2020-01-01 12:17:00",
+      "channel": 1,
+      "value": 383
+    },
+    {
+      "id": 20,
+      "snapdatetime": "2020-01-01 12:18:00",
+      "channel": 1,
+      "value": 283
+    },
+    {
+      "id": 21,
+      "snapdatetime": "2020-01-01 12:19:00",
+      "channel": 1,
+      "value": 111
+    }
   ],
-  "profile": { "name": "typicode" }
+  "profile": {
+    "name": "typicode"
+  }
 }

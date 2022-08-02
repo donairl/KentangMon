@@ -30,6 +30,7 @@ export class HomePage {
         bottom: 0,
         right: 0
       }
+
     },
     scales: {
       x: {
@@ -77,7 +78,7 @@ export class HomePage {
   public chdata: Channel;
   private activeChannel:number;
   private menuButton: Array<ActionSheetButton>;
-  alarm: any;
+  alarm: Channel;
 
   constructor(public dfs: DataFetcherService,public actionSheetController: ActionSheetController) {
     this.updateMenu();
@@ -207,24 +208,21 @@ export class HomePage {
       buttons: this.menuButton
     });
     await actionSheet.present();
-    // [, {
-    //   text: 'Cancel',
-    //   icon: 'close',
-    //   role: 'cancel',
-    //   handler: () => {
-    //     console.log('Cancel clicked');
-    //   }
-    // }]
+
     const { role, data } = await actionSheet.onDidDismiss();
     console.log('onDidDismiss resolved with role and data', role, data);
   }
 
   setAlarm() {
-     console.log(this.alarm);
+
+     this.dfs.httpChannelsave(this.alarm).subscribe((r)=>{
+         this.chdata = r;
+     });
   }
 
   confirmChangeAlarm() {
     this.modal.dismiss(null, 'confirm');
+    this.setAlarm();
   }
 
   closeModal() {
@@ -239,6 +237,7 @@ export class HomePage {
   }
 
   openAlarmModel() {
+    this.alarm=this.chdata;
     this.modal.present().then(r => console.log(r));
   }
 }

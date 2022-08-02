@@ -30,6 +30,16 @@ export class DataFetcherService {
 
   }
 
+  public httpChannelsave(body:Channel): Observable<Channel> {
+
+
+    return this.http.put<Channel>(this.rootApi + '/channelinfo/'+body.id,body).pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+
+  }
+
   public httpAllChannel(): Observable<Channel[]> {
 
 

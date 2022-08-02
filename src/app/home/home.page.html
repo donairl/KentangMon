@@ -60,6 +60,7 @@
 
     </ion-row>
   </ion-grid>
+  <!--MODAL-->
   <ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
     <ng-template>
       <ion-header>
@@ -76,19 +77,19 @@
       <ion-content class="ion-padding">
         <ion-item>
           <ion-label position="stacked">Alarm Min</ion-label>
-          <ion-input type="text" placeholder="Enter value" [(ngModel)]="alarm.min"></ion-input>
+          <ion-input type="text" placeholder="Enter value" [(ngModel)]="alarm.alarm_min"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Alarm Middle On</ion-label>
-          <ion-input type="text" placeholder="Enter value" [(ngModel)]="alarm.midon"></ion-input>
+          <ion-input type="text" placeholder="Enter value" [(ngModel)]="alarm.alarm_mid_on"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Alarm Middle Off</ion-label>
-          <ion-input type="text" placeholder="Enter value" [(ngModel)]="alarm.midoff"></ion-input>
+          <ion-input type="text" placeholder="Enter value" [(ngModel)]="alarm.alarm_mid_off"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked">Alarm Max</ion-label>
-          <ion-input type="text" placeholder="Enter value" [(ngModel)]="alarm.max"></ion-input>
+          <ion-input type="text" placeholder="Enter value" [(ngModel)]="alarm.alarm_max"></ion-input>
         </ion-item>
       </ion-content>
     </ng-template>
