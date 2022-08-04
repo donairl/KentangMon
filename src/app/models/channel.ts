@@ -2,6 +2,7 @@ export interface Channel {
 
 
   id: number;
+  group_name:string;
   name: string;
   unit: string;
   value: number;

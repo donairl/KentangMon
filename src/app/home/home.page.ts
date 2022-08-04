@@ -118,7 +118,7 @@ export class HomePage {
   ionViewWillEnter(){
 
     this.refresh();
-    interval(10 *1000).subscribe((r)=>{
+    interval(30 *1000).subscribe((r)=>{
       //  this.chdata = r;
       this.refresh();
       console.log(r);
@@ -132,8 +132,7 @@ export class HomePage {
 
     this.dfs.httpChannelinfo(this.activeChannel).subscribe((r)=>{
       this.chdata = r;
-      console.log(this.chdata);
-       this.updateChart();
+      this.updateChart();
 
    });
 
@@ -179,7 +178,7 @@ export class HomePage {
       r.forEach((row)=>{
         this.menuButton.push(
         {
-            text: row.name,
+            text: row.group_name.concat(' ',row.name),
             icon: 'heart',
             data: row.id,
             handler: () => {
