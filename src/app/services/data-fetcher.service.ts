@@ -49,10 +49,10 @@ export class DataFetcherService {
     );
 
   }
-  public httpChannelTrend(): Observable<trend[]> {
+  public httpChannelTrend(channelNo): Observable<trend[]> {
 
 
-    return this.http.get<trend[]>(this.rootApi + '/trend').pipe(
+    return this.http.get<trend[]>(this.rootApi + '/trend?chid='+channelNo).pipe(
       retry(3),
       catchError(this.handleError)
     );

@@ -17,9 +17,10 @@ export interface Channel {
 
 export interface trend {
   id: number;
-  snapdatetime: string;
+  CreatedAt: string;
   channel: number;
-  value: number;
+  Realvalue: number;
+  Rawvalue:number;
 }
 
 

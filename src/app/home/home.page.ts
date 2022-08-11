@@ -148,20 +148,21 @@ export class HomePage {
    this.lineChartData.datasets[0].label = this.chdata.name;
 
 
-    this.dfs.httpChannelTrend().subscribe((r)=>{
+    this.dfs.httpChannelTrend(this.activeChannel).subscribe((r)=>{
      // this.chdata = r;
       console.log(r);
       r.forEach((row)=>{
-        this.lineChartData.labels.push(row.snapdatetime);
+        this.lineChartData.labels.push(new Date(row.CreatedAt).toLocaleString());
        // this.lineChartData.datasets[0].data.push(Math.floor(Math.random() * row.value));
-        this.lineChartData.datasets[0].data.push(row.value);
+        console.log('Row : ',row);
+        this.lineChartData.datasets[0].data.push(row.Realvalue);
         this.lineChartData.datasets[1].data.push( this.chdata.alarm_max);
         this.lineChartData.datasets[2].data.push( this.chdata.alarm_min);
 
       });
 
 
-      console.log('w =',this.chart.chart.width, this.chdata.alarm_max);
+      console.log('d = ', this.lineChartData.datasets[0].data);
       this.chart.chart.update();
 
 
