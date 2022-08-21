@@ -16,6 +16,7 @@ import {
 })
 export class DataFetcherService {
   private rootApi = 'http://localhost:8081';
+  private deviceNo = 2;
 
 
   constructor(public http:HttpClient) { }
@@ -43,7 +44,7 @@ export class DataFetcherService {
   public httpAllChannel(): Observable<Channel[]> {
 
 
-    return this.http.get<Channel[]>(this.rootApi + '/channelinfo').pipe(
+    return this.http.get<Channel[]>(this.rootApi + '/channelinfo?devno='+this.deviceNo).pipe(
       retry(2),
       catchError(this.handleError)
     );

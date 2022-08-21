@@ -6,7 +6,8 @@ import {Channel} from "../models/channel";
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import {ActionSheetButton, ActionSheetController, IonModal} from "@ionic/angular";
 import { BaseChartDirective } from 'ng2-charts';
-
+import {ActivatedRoute} from "@angular/router";
+import {Location} from '@angular/common';
 
 
 
@@ -80,7 +81,7 @@ export class HomePage {
   private menuButton: Array<ActionSheetButton>;
   alarm: Channel;
 
-  constructor(public dfs: DataFetcherService,public actionSheetController: ActionSheetController) {
+  constructor(public dfs: DataFetcherService,public actionSheetController: ActionSheetController,public activatedRoute: ActivatedRoute,private _location: Location) {
     this.updateMenu();
     this.lineChartData = {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
@@ -116,9 +117,9 @@ export class HomePage {
 
 
   ionViewWillEnter(){
-
+    this.activatedRoute.params.subscribe(params =>this.activeChannel = params['chid']);
     this.refresh();
-    interval(30 *1000).subscribe((r)=>{
+    interval(5 *1000).subscribe((r)=>{
       //  this.chdata = r;
       this.refresh();
       console.log(r);
@@ -240,5 +241,9 @@ export class HomePage {
   openAlarmModel() {
     this.alarm=this.chdata;
     this.modal.present().then(r => console.log(r));
+  }
+
+  backToGroup() {
+    this._location.back();
   }
 }
