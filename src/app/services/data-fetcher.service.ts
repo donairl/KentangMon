@@ -15,8 +15,8 @@ import {
   providedIn: 'root'
 })
 export class DataFetcherService {
-  private rootApi = 'http://localhost:8081';
-  private deviceNo = 2;
+  private rootApi = 'http://36.66.205.254:8080';
+  private deviceNo = 9;
 
 
   constructor(public http:HttpClient) { }
