@@ -33,7 +33,7 @@
 }
 
 .info p  {
-  color: wheat;
+  //color: wheat;
   font-size: 14px;
 }
 
@@ -45,5 +45,24 @@
 @keyframes blinker {
   50% {
     opacity: 0;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  ion-toolbar {
+    background-color: #28ba62;
+  }
+
+  .info p  {
+  color: #4c3508;
+
+  }
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #6a0e0e;
+
+    margin: 0;
   }
 }
