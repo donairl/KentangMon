@@ -10,3 +10,6 @@ Is Ionic Application use to fetch data from IOT Hardware like power usage, liqui
 
 ## JSON Format
 in directory dataprovider : db.json
+
+## Notes:
+cordova-res android --skip-config --icon-background-source #C75126 --copy

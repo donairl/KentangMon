@@ -153,7 +153,7 @@ export class HomePage {
      // this.chdata = r;
       console.log(r);
       r.forEach((row)=>{
-        this.lineChartData.labels.push(new Date(row.CreatedAt).toLocaleString());
+        this.lineChartData.labels.push(new Date(row.CreatedAt).toLocaleTimeString());
        // this.lineChartData.datasets[0].data.push(Math.floor(Math.random() * row.value));
         console.log('Row : ',row);
         this.lineChartData.datasets[0].data.push(row.Realvalue);
