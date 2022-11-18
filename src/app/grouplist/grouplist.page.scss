@@ -1,0 +1,46 @@
+.info-v p.data {
+
+  font-weight: bold;
+  font-size: 45px;
+   text-align:  right;
+}
+
+.info-v p.unit  {
+  color: wheat;
+  font-size: 20px;
+  text-align:  right;
+}
+
+@media (prefers-color-scheme: light) {
+
+
+
+  .info-v p.data {
+    color: #ffc409;
+  }
+  .info-v p.unit  {
+    color: #403517;
+
+  }
+  .footer-label{
+    color: grey;
+    padding: 20px;
+
+  }
+}
+@media (prefers-color-scheme: dark) {
+  .info-v p.data {
+    color: yellowgreen;
+  }
+
+  .info-v p.unit {
+    color: wheat;
+
+  }
+  .footer-label{
+    color: grey;
+    padding: 20px;
+
+  }
+
+}

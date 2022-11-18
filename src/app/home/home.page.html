@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Sistem Penerawangan Data - Jasa Tirta 1
+      WQMS - Jasa Tirta 1
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +9,7 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Terawang</ion-title>
+      <ion-title size="large">Water Quality</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -25,11 +25,13 @@
           </ion-card-header>
 
           <ion-card-content class="info">
+
              <p><span>{{chdata.value}} </span><span [innerHTML]="chdata.unit"></span></p>
              <ion-button color="secondary" (click)="presentActionMenu()"><ion-icon name="menu-outline"></ion-icon></ion-button>
              <ion-button color="dark" (click)="openAlarmModel()"  ><ion-icon name="alarm-outline"></ion-icon></ion-button>
              <ion-button color="danger" (click)="backToGroup()"><ion-icon name="refresh-circle-outline"></ion-icon></ion-button>
-
+             <ion-button color="primary" (click)="setMode(1)">AVG Per Jam</ion-button>
+             <ion-button color="primary" (click)="setMode(0)">Real Time</ion-button>
           </ion-card-content>
         </ion-card>
         <ion-card>

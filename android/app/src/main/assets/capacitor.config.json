@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "ChemMon",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

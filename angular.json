@@ -45,7 +45,8 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/",
+              "baseHref": "/ngagel-sby/",
+
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",

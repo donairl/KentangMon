@@ -50,13 +50,21 @@ export class DataFetcherService {
     );
 
   }
-  public httpChannelTrend(channelNo): Observable<trend[]> {
+  //dataMode 0 Realtime 1, perhour avg
+  public httpChannelTrend(channelNo,dataMode): Observable<trend[]> {
 
-
+  if (dataMode == 0 ){
     return this.http.get<trend[]>(this.rootApi + '/trend?chid='+channelNo).pipe(
       retry(3),
       catchError(this.handleError)
     );
+  } else{
+    return this.http.get<trend[]>(this.rootApi + '/trendperhour?chid='+channelNo).pipe(
+      retry(3),
+      catchError(this.handleError)
+    );
+  }
+
 
   }
 

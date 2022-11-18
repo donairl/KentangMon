@@ -80,9 +80,11 @@ export class HomePage {
   private activeChannel:number;
   private menuButton: Array<ActionSheetButton>;
   alarm: Channel;
+  private dataMode: number;
 
   constructor(public dfs: DataFetcherService,public actionSheetController: ActionSheetController,public activatedRoute: ActivatedRoute,private _location: Location) {
     this.updateMenu();
+    this.dataMode = 0;
     this.lineChartData = {
       labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 
@@ -149,7 +151,7 @@ export class HomePage {
    this.lineChartData.datasets[0].label = this.chdata.name;
 
 
-    this.dfs.httpChannelTrend(this.activeChannel).subscribe((r)=>{
+    this.dfs.httpChannelTrend(this.activeChannel,this.dataMode).subscribe((r)=>{
      // this.chdata = r;
       console.log(r);
       r.forEach((row)=>{
@@ -245,5 +247,9 @@ export class HomePage {
 
   backToGroup() {
     this._location.back();
+  }
+
+  setMode(number: number) {
+    this.dataMode = number;
   }
 }
