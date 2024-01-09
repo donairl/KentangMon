@@ -16,7 +16,7 @@ import {
 })
 export class DataFetcherService {
   private rootApi = 'http://36.66.205.254:8080';
-  private deviceNo = 9;
+  private deviceNo = 10;
 
 
   constructor(public http:HttpClient) { }
